@@ -50,7 +50,7 @@ class FacebookClient {
         $tokenMetadata->validateAppId($this->appId);
         $tokenMetadata->validateExpiration();
 
-        $accessToken = $this->generateLongLivedAccessToken($accessToken, $oAuth2Client);
+        $accessToken = $this->makeLongLivedIfNeeded($accessToken, $oAuth2Client);
 
         $_SESSION['fb_access_token'] = (string)$accessToken;
 
@@ -103,8 +103,8 @@ class FacebookClient {
      * @param $oAuth2Client \Facebook\Authentication\OAuth2Client
      * @return \Facebook\Authentication\AccessToken
      */
-    private function generateLongLivedAccessToken($accessToken, $oAuth2Client) {
-        $longLivedToken = null;
+    private function makeLongLivedIfNeeded($accessToken, $oAuth2Client) {
+        $longLivedToken = $accessToken;
         if (!$accessToken->isLongLived()) {
             try {
                 $longLivedToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
