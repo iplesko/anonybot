@@ -1,6 +1,5 @@
 <?php
 require_once 'init.php';
-$guard->authorize();
 $renderer->renderStart();
 ?>
     <div class="alert alert-success" role="alert">

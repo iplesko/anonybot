@@ -5,7 +5,7 @@
     <div class="col-sm-12">
         <hr />
         <p class="text-muted text-right">
-            v1.0.2,
+            v1.0.3,
             <a href="https://github.com/iplesko/anonybot">github</a>
         </p>
     </div>

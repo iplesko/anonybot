@@ -14,13 +14,6 @@ class Guard {
         $this->botToken = $botToken;
     }
 
-    public function assertLogin() {
-        if (!isset($_SESSION['fb_access_token'])) {
-            header("Location: index.php");
-            exit;
-        }
-    }
-
     /**
      * @throws \Facebook\Exceptions\FacebookSDKException
      */
@@ -30,6 +23,13 @@ class Guard {
         $allowedUserIdArray = $this->getGroupMembers();
         $currentUserId = $this->getCurrentUserId();
         $this->assertUserIdIsInAllowed($currentUserId, $allowedUserIdArray);
+    }
+
+    private function assertLogin() {
+        if (!isset($_SESSION['fb_access_token'])) {
+            header("Location: index.php");
+            exit;
+        }
     }
 
     /**

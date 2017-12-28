@@ -1,6 +1,5 @@
 <?php
 require_once 'init.php';
-$guard->assertLogin();
 $renderer->renderStart();
 ?>
     <div class="alert alert-danger" role="alert">
